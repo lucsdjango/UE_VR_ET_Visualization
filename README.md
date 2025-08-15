@@ -28,7 +28,8 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
 - Check that a new file has been created under /Content/VRETLogs/withCalculatedFixations/, and its name is in the Processed Log File entry field.
 - Click Visualize Fixations.
 - Note that an ETVisualization object with blue spheres representing fixations as children appears in the level.
-- Scrub the slider to replay the movement of the headset and appearance of fixations.
+- Scrub the slider to replay the movement of the headset, gaze intersection point, and fixations.
+- Pressing Play (best in non-VR mode) will also replay the replay the movement and fixations in 1:1 time.
   
 
 **Components**:
@@ -40,5 +41,5 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
 - TSVLogger
   - C++ class that handles logging of data organized in columns (variables) and rows (ticks) as tab separated text files.
   - Can log custom varibles (besides the tracking data) by calling AddEntry() (before StartLogging() is called in VRETLogging) and then one of the Update functions at every tick. All these functions are callable from blueprints. For an example, see LogTest blueprint.
- 
-
+- FixationsVisualizationWidgetBlueprint / ETVisualization / Fixation
+  - BLueprint classes that control the visualization of recorded data. 
