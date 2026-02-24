@@ -43,3 +43,34 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
   - Can log custom varibles (besides the tracking data) by calling AddEntry() (before StartLogging() is called in VRETLogging) and then one of the Update functions at every tick. All these functions are callable from blueprints. For an example, see LogTest blueprint.
 - FixationsVisualizationWidgetBlueprint / ETVisualization / Fixation
   - BLueprint classes that control the visualization of recorded data. 
+
+**Setting up UE 5.4 with Visual studio**:
+- Needed to work with C++ classes in Unreal Engine.
+  - [Follow steps in UE official documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.4).
+  - In UE
+    - Disable LiveCoding in Editor Preferences
+  - In Visual Studio
+    - Uninstall Incredibuild
+    - Set Solution configuration (dropdown in toolbar) to Development editor.
+    - Build/rebuild by right-clicking the project under Games in Solution Explorer panel (to the right), if needed.
+
+**Using Varjo OpenXR plugin**:
+  - Can be installed via [Unreal Engine’s FAB plugin browser](https://fab.com/s/5761f1f00efa).
+  - Enable OpenXR in Varjo Base.
+  - For further documentation, check out [Varjo Devloper Portal](https://developer.varjo.com/docs/unreal/ue5/unreal5). Future updates will (according to Varjo) provide more extensive eyetracking data.
+
+**Using Meta Quest Pro (via link cable or AirLink)**:
+  - Setup Meta Quest Link app on PC, and connect to Quest Pro Headset.
+  - In [Meta Quest Link app](https://www.meta.com/en-gb/help/quest/1517439565442928/)
+    - Set Meta Quest Link as OpenXR runtime.
+    - Enable Eyetracking over Link in Settings > Beta.
+  - Download [Unreal Meta XR plugin](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/71.0). Latest version that supports UE5.4 is 71.0.
+  - In UE
+    - Enable Meta XR plugin and restart.
+    - In Project Settings > Plugins > Meta XR, set XR API To Epic Native OpenXR
+    - In Project Settings > Plugins > OpenXR, disable Foveated Rendering
+    - (May require a couple of restarts of headset and UE to work.)
+
+**Renaming Unreal Project**:
+  - Perhaps you want to rename or create a new copy of the Unreal Project. This is a bit complicated with Projects containing C++ source code.
+  - [Check out guide here](https://unrealistic.dev/posts/rename-your-project-including-code).
