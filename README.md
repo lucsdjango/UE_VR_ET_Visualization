@@ -1,9 +1,8 @@
 Unreal 5.4 project, based on the VR starter assets, with added support for logging, and visualizing VR with integrated eye-tracking data.
 
 **Dependencies**:
-- Unreal Engine 5.4
-- [Varjo OpenXR plugin](https://fab.com/s/5761f1f00efa)
-- [Visual Studio Integration Tool](https://fab.com/s/81403d127574)
+- Unreal Engine 5.7
+- [Varjo OpenXR plugin](https://fab.com/s/5761f1f00efa) or [Unreal Meta XR plugin](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/71.0). 
 
 **Usage**:
 - Open project.
@@ -44,16 +43,16 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
 - FixationsVisualizationWidgetBlueprint / ETVisualization / Fixation
   - BLueprint classes that control the visualization of recorded data. 
 
-**Setting up UE 5.4 with Visual studio**:
+**Setting up UE 5.7 with Visual studio Code**:
 - Needed to work with C++ classes in Unreal Engine.
-  - [Follow steps in UE official documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.4).
+  - [Follow steps in UE official documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-code-for-unreal-engine).
+    - When installing "Build Tools for Visual Studio", check "Desktop Development with C++" and ".NET desktop build tools".
   - In UE
     - Disable LiveCoding in Editor Preferences
-  - In Visual Studio
-    - Uninstall Incredibuild
+    - Close UE editor when first compiling.
+  - In Visual Studio Code
     - Set Solution configuration (dropdown in toolbar) to Development editor.
-    - Build/rebuild by right-clicking the project under Games in Solution Explorer panel (to the right), if needed.
-
+    - Build/rebuild by pressing F5.
 **Using Varjo OpenXR plugin**:
   - Can be installed via [Unreal Engine’s FAB plugin browser](https://fab.com/s/5761f1f00efa).
   - Enable OpenXR in Varjo Base.
@@ -64,7 +63,7 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
   - In [Meta Quest Link app](https://www.meta.com/en-gb/help/quest/1517439565442928/)
     - Set Meta Quest Link as OpenXR runtime.
     - Enable Eyetracking over Link in Settings > Beta.
-  - Download [Unreal Meta XR plugin](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/71.0). Latest version that supports UE5.4 is 71.0.
+  - Download [Unreal Meta XR plugin](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/71.0). 
   - In UE
     - Enable Meta XR plugin and restart.
     - In Project Settings > Plugins > Meta XR, set XR API To Epic Native OpenXR
