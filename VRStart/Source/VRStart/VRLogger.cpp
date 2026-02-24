@@ -9,6 +9,8 @@ AVRLogger::AVRLogger()
  	// Set this actor to call Tick() every frame.
 	PrimaryActorTick.bCanEverTick = true;
 	Labels = { TEXT("Valid"),TEXT("GazeOrigin"), TEXT("GazeDir"), TEXT("Conf"), TEXT("FixPoint"), TEXT("LBlink"), TEXT("RBlink"), TEXT("LPupil"), TEXT("RPupil"), TEXT("LOrigin"),TEXT("LDir"),TEXT("ROrigin"),TEXT("RDir"),TEXT("HitPos"),TEXT("HitName") };
+	if(GEngine)
+    	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Some debug message!"));	
 }
 
 // Called when the game starts or when spawned

@@ -11,12 +11,12 @@ import sys
 
 class IDTVR:
     def __init__(self,
-                 time_th=0.2, disp_th=1, freq_th=30, numba_allow=True):
+                 time_th=0.25, disp_th=1, freq_th=30, numba_allow=True):
         self.time_th = time_th
         self.disp_th = disp_th
         self.numba_allow = numba_allow
         self.freq_th = freq_th
-
+        print(disp_th)
         self.class_disp = None
 
     # ### This function is the implementation of the I-DT algorithm in VR-centred system.
@@ -30,7 +30,7 @@ class IDTVR:
                     time="time",
                     et_x="et_x", et_y="et_y", et_z="et_z",
                     head_pos_x="head_pose_x", head_pos_y="head_pose_y", head_pos_z="head_pose_z",
-                    debug=True):
+                    debug=False):
         data = data.reset_index(drop=True)
         data["class_disp"] = ["?"] * data.shape[0]
         initial_idx = data.index.values[0]
@@ -41,11 +41,11 @@ class IDTVR:
                 data.iloc[initial_idx]
             except:
                 break
-            
-            print('hej')
+
             init_time = data[time].iloc[initial_idx]
             fin_time = self.time_th + init_time
-            end_idx = np.argsort(np.abs(data[time].values - fin_time))[0]
+            end_idx = np.where(data[time].values < fin_time)[0][-1]
+            # end_idx = np.argsort(np.abs(data[time].values - fin_time))[0]
 
             if end_idx == initial_idx and end_idx != final_idx:
                 end_idx += 1
@@ -63,14 +63,14 @@ class IDTVR:
                 head_mean_pos_x = np.nanmean(sub_data[head_pos_x])
                 head_mean_pos_y = np.nanmean(sub_data[head_pos_y])
                 head_mean_pos_z = np.nanmean(sub_data[head_pos_z])
-                
+
                 output = list(map(self.compute_disp_angle,
                                   zip([[head_mean_pos_z] * sub_data.shape[0]],
                                       [[head_mean_pos_x] * sub_data.shape[0]],
                                       [[head_mean_pos_y] * sub_data.shape[0]],
                                       [sub_data[et_z].values],
-                                      [sub_data[et_y].values],
-                                      [sub_data[et_x].values])))
+                                      [sub_data[et_x].values],
+                                      [sub_data[et_y].values])))
 
                 list_thetas, msg = output[0]
 
@@ -98,8 +98,8 @@ class IDTVR:
                                                   [[head_mean_pos_x] * sub_data.shape[0]],
                                                   [[head_mean_pos_y] * sub_data.shape[0]],
                                                   [sub_data[et_z].values],
-                                                  [sub_data[et_y].values],
-                                                  [sub_data[et_x].values])))
+                                                  [sub_data[et_x].values],
+                                                  [sub_data[et_y].values])))
 
                             list_thetas, msg = output[0]
                             if msg == "found" or j >= final_idx:
@@ -117,7 +117,7 @@ class IDTVR:
 
                             break
                 else:
-                    data["class_disp"].iloc[initial_idx] = 1 
+                    data["class_disp"].iloc[initial_idx] = 1
                     initial_idx += 1
             else:
                 data["class_disp"].iloc[initial_idx] = 1
@@ -131,14 +131,18 @@ class IDTVR:
     @nb.jit(nopython=True)
     def get_result_numba(all_x, all_y, all_z, disp_th):
         label_break = 0.0
+        
+        norms = np.sqrt(all_x**2 + all_y**2 + all_z**2)
+        
         result_list = []
         for i in range(all_x.shape[0] - 1, 1 - 1, -1):
+            # den1 = np.sqrt(all_x[i] ** 2 + all_y[i] ** 2 + all_z[i] ** 2)
+            norm_i = norms[i]
             for j in range(0, i):
                 num = all_x[i] * all_x[j] + all_y[i] * all_y[j] + all_z[i] * all_z[j]
-                den1 = np.sqrt(all_x[i] ** 2 + all_y[i] ** 2 + all_z[i] ** 2)
-                den2 = np.sqrt(all_x[j] ** 2 + all_y[j] ** 2 + all_z[j] ** 2)
+                # den2 = np.sqrt(all_x[j] ** 2 + all_y[j] ** 2 + all_z[j] ** 2)
 
-                result = np.abs(num) / (den1 * den2)
+                result = np.abs(num) / (norm_i * norms[j])
                 result_degrees = np.arccos(result) * (180 / np.pi)
                 result_list.append(result_degrees)
 

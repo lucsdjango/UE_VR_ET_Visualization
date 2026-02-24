@@ -8,7 +8,7 @@ public class VRStartEditorTarget : TargetRules
 	public VRStartEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-		DefaultBuildSettings = BuildSettingsVersion.V5;
+		DefaultBuildSettings = BuildSettingsVersion.V6;
 
 		ExtraModuleNames.AddRange( new string[] { "VRStart" } );
 	}

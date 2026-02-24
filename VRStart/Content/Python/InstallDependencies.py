@@ -35,9 +35,21 @@ def pip_install(packages):
 
     return proc.poll()
 
+
 def installDependencies():
     # Put here your required python packages
-    required = {'numpy','pandas','numba'}
+    
+    #uninstall_pandas()
+    #print('sinstalled')
+
+    
+    #reinstall_pandas()
+    #print('resinstalled')
+    
+    #checkVersion()
+    #print('checked')
+    
+    required = {'numpy','numba', 'pandas==2.3.3'}
     installed = {pkg.key for pkg in pkg_resources.working_set}
     missing = required - installed
 
@@ -47,4 +59,5 @@ def installDependencies():
         pip_install(missing)
     else:
         unreal.log("All python requirements already satisfied")
-        
+    
+    

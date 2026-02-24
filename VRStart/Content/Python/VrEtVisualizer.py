@@ -65,12 +65,12 @@ def readETData(fileName, time_th, disp_th, freq_th, useFocal):
 
     print("Shape", df_et.shape)
     print("Columns", df_et.columns)
-    
+
     #IDTVR(time_th=0.15, disp_th=1, freq_th=50)
     
     idt_vr = IDTVR(time_th=time_th, disp_th=disp_th, freq_th=freq_th)
 
-    df_et_w_fixations = idt_vr.fit_compute(df_et, time="time",)
+    df_et_w_fixations = idt_vr.fit_compute(df_et.copy(deep=True), time="time",)
     df_et_w_fixations['diff'] = df_et_w_fixations['class_disp'].diff()
     df_et_w_fixations['newFixation'] = df_et_w_fixations['diff'].abs() #df_et_w_fixations['diff'] == -1).astype(int)
     df_et_w_fixations['fixationIdx'] = df_et_w_fixations['newFixation'].cumsum()
