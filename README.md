@@ -75,5 +75,5 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
   - Perhaps you want to rename or create a new copy of the Unreal Project. This is a bit complicated with Projects containing C++ source code.
   - [Check out guide here](https://unrealistic.dev/posts/rename-your-project-including-code).
 
-**References:
-Llanes-Jurado, J.; Marín-Morales, J.; Guixeres, J.; Alcañiz, M. Development and Calibration of an Eye-Tracking Fixation Identification Algorithm for Immersive Virtual Reality. Sensors 2020, 20, 4956
+**References**:
+  - Llanes-Jurado, J.; Marín-Morales, J.; Guixeres, J.; Alcañiz, M. Development and Calibration of an Eye-Tracking Fixation Identification Algorithm for Immersive Virtual Reality. Sensors 2020, 20, 4956
