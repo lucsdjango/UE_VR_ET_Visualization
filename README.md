@@ -53,6 +53,7 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
   - In Visual Studio Code
     - Set Solution configuration (dropdown in toolbar) to Development editor.
     - Build/rebuild by pressing F5.
+
 **Using Varjo OpenXR plugin**:
   - Can be installed via [Unreal Engine’s FAB plugin browser](https://fab.com/s/5761f1f00efa).
   - Enable OpenXR in Varjo Base.
@@ -73,3 +74,6 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
 **Renaming Unreal Project**:
   - Perhaps you want to rename or create a new copy of the Unreal Project. This is a bit complicated with Projects containing C++ source code.
   - [Check out guide here](https://unrealistic.dev/posts/rename-your-project-including-code).
+
+**References:
+Llanes-Jurado, J.; Marín-Morales, J.; Guixeres, J.; Alcañiz, M. Development and Calibration of an Eye-Tracking Fixation Identification Algorithm for Immersive Virtual Reality. Sensors 2020, 20, 4956
