@@ -9,7 +9,7 @@ Developed and tested with Unreal Engine 5.7.
 1. Copy the `VRETLogger` folder into your project's `Plugins/` directory (create it if it does not exist).
 2. Open the project. If you installed a source-only copy, accept the prompt to rebuild the plugin module (requires a C++ toolchain; a prebuilt copy needs no compiler).
 3. Enable the plugin under **Edit > Plugins > Virtual Reality > VR Eye-Tracking Logger** if it is not already enabled, and restart the editor. The required *Python Editor Script Plugin* and *Editor Scripting Utilities* plugins are enabled automatically.
-4. Enable an OpenXR eye-tracking source for your headset (e.g. *OpenXR Eye Tracker* plugin, [Varjo OpenXR](https://fab.com/s/5761f1f00efa), or [Meta XR](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/71.0)).
+4. Enable an OpenXR eye-tracking source for your headset (e.g. *OpenXR Eye Tracker* plugin).
 5. To see the plugin's blueprints in the Content Browser, enable **Settings > Show Plugin Content**. They are under `Plugins/VRETLogger Content/`.
 
 ## Recording
