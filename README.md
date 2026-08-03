@@ -1,4 +1,6 @@
-Unreal 5.4 project, based on the VR starter assets, with added support for logging, and visualizing VR with integrated eye-tracking data.
+Unreal 5.7 project, based on the VR starter assets, with added support for logging, and visualizing VR with integrated eye-tracking data.
+
+All eye-tracking additions (C++ classes, blueprints, editor widget, and Python scripts) are packaged as a self-contained plugin in `VRStart/Plugins/VRETLogger`, so they can be installed into other Unreal projects — see *Using the VRETLogger plugin in other projects* below and `VRStart/Plugins/VRETLogger/README.md`. The blueprints live in the plugin's content folder: enable **Settings > Show Plugin Content** in the Content Browser to see them under *VRETLogger Content*.
 
 **Dependencies**:
 - Unreal Engine 5.7
@@ -19,7 +21,7 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
 - Inspect log file in /Content/VRETLogs/
 
 **Visualization of fixations**:
-- Run FixationsVisualizationWidgetBlueprint. (Rightclick and select run in content browser)
+- Run FixationsVisualizationWidgetBlueprint, found under *VRETLogger Content* in the content browser. (Rightclick and select run in content browser)
 - On first run, click Install Requirements to install required python libraries.
 - Check that the name of the latest log file is in the Input Log File entry field.
 - Click Calculate Fixations. Calls python library taken from [Llanes-Jurado et al. (2020)](https://www.mdpi.com/1424-8220/20/17/4956). Refer to paper for explanation of parameters.
@@ -42,6 +44,14 @@ Unreal 5.4 project, based on the VR starter assets, with added support for loggi
   - Can log custom varibles (besides the tracking data) by calling AddEntry() (before StartLogging() is called in VRETLogging) and then one of the Update functions at every tick. All these functions are callable from blueprints. For an example, see LogTest blueprint.
 - FixationsVisualizationWidgetBlueprint / ETVisualization / Fixation
   - BLueprint classes that control the visualization of recorded data. 
+
+All of the above (plus the VRSpectator desktop-view pawn and the Python scripts) live in the VRETLogger plugin: C++ in `VRStart/Plugins/VRETLogger/Source`, blueprints in the plugin content folder, Python in `VRStart/Plugins/VRETLogger/Content/Python`.
+
+**Using the VRETLogger plugin in other projects**:
+- Copy the `VRStart/Plugins/VRETLogger` folder into the other project's `Plugins/` folder (create it if needed).
+- Open the project and rebuild the plugin module when prompted (needs a C++ toolchain, see VS Code setup below), or use a prebuilt package so no compiler is required.
+- Enable the plugin in Edit > Plugins if it is not enabled automatically. The Python Editor Script Plugin and Editor Scripting Utilities are pulled in automatically as dependencies.
+- Full installation and usage instructions are in `VRStart/Plugins/VRETLogger/README.md`.
 
 **Setting up UE 5.7 with Visual studio Code**:
 - Needed to work with C++ classes in Unreal Engine.

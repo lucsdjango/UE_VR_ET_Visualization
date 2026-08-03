@@ -15,6 +15,10 @@
 	],
 	"Plugins": [
 		{
+			"Name": "VRETLogger",
+			"Enabled": true
+		},
+		{
 			"Name": "OpenXR",
 			"Enabled": true
 		},
